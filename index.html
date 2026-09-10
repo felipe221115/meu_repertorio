@@ -116,7 +116,14 @@ footer{text-align:center;padding:35px;color:#777}
 <button class="btn" onclick="savePartitura()">💾 Salvar partitura</button>
 </div>
 </div></div>
-<div id="modal" class="modal"><div class="modalbox"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle"></h2><p>🎼 Aqui aparecerá a partitura.</p><p style="color:#777">Nesta versão, o cadastro da partitura fica salvo neste navegador. Para guardar também o arquivo PDF ou a imagem permanentemente e abrir em qualquer dispositivo, a próxima versão precisará usar armazenamento online.</p><button class="btn" onclick="closeModal()">Fechar</button></div></div>
+<div id="modal" class="modal">
+  <div class="modalbox" style="width:min(1000px,95vw);max-height:92vh">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle"></h2>
+    <div id="viewer" style="margin-top:15px;max-height:75vh;overflow:auto;text-align:center"></div>
+    <button class="btn" style="margin-top:15px" onclick="closeModal()">Fechar</button>
+  </div>
+</div>
 <footer>🎼 Meu Repertório Musical</footer>
 
 <script>
@@ -128,7 +135,14 @@ function show(id,btn){
  window.scrollTo(0,0);
 }
 function openModal(name){document.getElementById('modalTitle').textContent=name;document.getElementById('modal').classList.add('show')}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
+function closeModal(){
+ document.getElementById('modal').classList.remove('show');
+ document.getElementById('viewer').innerHTML='';
+ if(window.currentViewerUrl){
+   URL.revokeObjectURL(window.currentViewerUrl);
+   window.currentViewerUrl=null;
+ }
+}
 function filterCat(cat,btn){
  document.querySelectorAll('.cat').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');
  document.getElementById('search').value='';
@@ -266,9 +280,36 @@ async function openSavedFile(id){
   const items=await getAllFromDB();
   const item=items.find(x=>x.id===id);
   if(!item)return;
+
   const url=URL.createObjectURL(item.file);
-  window.open(url,'_blank');
-  setTimeout(()=>URL.revokeObjectURL(url),60000);
+  const viewer=document.getElementById('viewer');
+  const title=document.getElementById('modalTitle');
+  title.textContent=item.name;
+  viewer.innerHTML='';
+
+  if(item.type==='pdf' || item.file.type==='application/pdf'){
+    const frame=document.createElement('iframe');
+    frame.src=url;
+    frame.style.width='100%';
+    frame.style.height='70vh';
+    frame.style.border='0';
+    frame.style.borderRadius='10px';
+    frame.setAttribute('title','Visualizador da partitura');
+    viewer.appendChild(frame);
+  }else{
+    const img=document.createElement('img');
+    img.src=url;
+    img.alt=item.name;
+    img.style.maxWidth='100%';
+    img.style.height='auto';
+    img.style.display='block';
+    img.style.margin='0 auto';
+    img.style.borderRadius='10px';
+    viewer.appendChild(img);
+  }
+
+  document.getElementById('modal').classList.add('show');
+  window.currentViewerUrl=url;
 }
 async function removeSaved(id,button){
   if(!confirm('Excluir esta partitura?'))return;
