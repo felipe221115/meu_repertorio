@@ -57,7 +57,7 @@ footer{text-align:center;padding:35px;color:#777}
   <div class="container">
     <h2>⭐ Destaques</h2>
     <div class="grid">
-      <div class="card"><div class="music">🎵</div><h3>Yellow Submarine</h3><p>The Beatles • Piano</p><button onclick="openModal('Yellow Submarine')">Abrir partitura</button></div>
+      
       <div class="card"><div class="music">🎹</div><h3>Minha música favorita</h3><p>Repertório • Piano</p><button onclick="openModal('Minha música favorita')">Abrir partitura</button></div>
       <div class="card"><div class="music">🎼</div><h3>Nova partitura</h3><p>Adicionar depois</p><button onclick="openModal('Nova partitura')">Abrir partitura</button></div>
     </div>
@@ -81,13 +81,7 @@ footer{text-align:center;padding:35px;color:#777}
     <button class="cat" onclick="filterCat('Flauta',this)">🪈 Flauta</button>
     <button class="cat" onclick="filterCat('Favoritas',this)">⭐ Favoritas</button>
   </div>
-  <div class="grid" id="cards">
-    <div class="card" data-cat="Piano" data-name="yellow submarine"><div class="music">🎵</div><h3>Yellow Submarine</h3><p>The Beatles • Piano</p><button onclick="openModal('Yellow Submarine')">Abrir partitura</button></div>
-    <div class="card" data-cat="Piano Favoritas" data-name="imagine"><div class="music">🎼</div><h3>Imagine</h3><p>John Lennon • Piano</p><button onclick="openModal('Imagine')">Abrir partitura</button></div>
-    <div class="card" data-cat="Violão" data-name="minha canção"><div class="music">🎸</div><h3>Minha Canção</h3><p>Repertório • Violão</p><button onclick="openModal('Minha Canção')">Abrir partitura</button></div>
-    <div class="card" data-cat="Flauta" data-name="tema musical"><div class="music">🪈</div><h3>Tema Musical</h3><p>Repertório • Flauta</p><button onclick="openModal('Tema Musical')">Abrir partitura</button></div>
-  </div>
-</div>
+  <div class="grid" id="cards"></div>
 </section>
 
 <section id="categorias" class="section">
@@ -110,7 +104,7 @@ footer{text-align:center;padding:35px;color:#777}
 <h2>Editar partitura</h2>
 <p id="editorFile" style="color:#777"></p>
 <label style="display:block;text-align:left;margin-top:18px;font-weight:bold">Nome da música</label>
-<input id="editName" style="width:100%;padding:12px;margin-top:7px;border:1px solid #ccc;border-radius:8px" placeholder="Ex.: Yellow Submarine">
+<input id="editName" style="width:100%;padding:12px;margin-top:7px;border:1px solid #ccc;border-radius:8px" placeholder="Ex.: minha partitura">
 <label style="display:block;text-align:left;margin-top:15px;font-weight:bold">Categoria</label>
 <select id="editCategory" style="width:100%;padding:12px;margin-top:7px;border:1px solid #ccc;border-radius:8px">
 <option>Piano</option><option>Violão</option><option>Flauta</option><option>Favoritas</option><option>Outros</option>
@@ -121,7 +115,7 @@ footer{text-align:center;padding:35px;color:#777}
 </div>
 </div></div>
 <div id="modal" class="modal"><div class="modalbox"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle"></h2><p>🎼 Aqui aparecerá a partitura.</p><p style="color:#777">Nesta versão, o cadastro da partitura fica salvo neste navegador. Para guardar também o arquivo PDF ou a imagem permanentemente e abrir em qualquer dispositivo, a próxima versão precisará usar armazenamento online.</p><button class="btn" onclick="closeModal()">Fechar</button></div></div>
-<footer>🎼 Meu Repertório Musical • Prévia do site</footer>
+<footer>🎼 Meu Repertório Musical</footer>
 
 <script>
 function show(id,btn){
