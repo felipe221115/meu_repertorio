@@ -7,36 +7,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meu Repertório Musical</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f3ef;color:#222}
-header{background:#171717;color:white;padding:18px 7%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f3ef;color:#222}
+header{background:#171717;color:#fff;padding:16px 7%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20}
 .logo{font-size:23px;font-weight:bold}.logo span{color:#d6a84f}
-nav button{background:none;border:0;color:white;margin-left:10px;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:15px}
+nav button{background:none;border:0;color:#fff;margin-left:6px;padding:10px 13px;border-radius:8px;cursor:pointer;font-size:15px}
 nav button:hover,nav button.active{background:#333}
-.hero{padding:70px 7%;background:linear-gradient(120deg,#252525,#4a3a22);color:white}
-.hero h1{font-size:45px;margin:0 0 12px}.hero p{font-size:18px;color:#ddd;max-width:600px}
-.btn{border:0;background:#d6a84f;color:#171717;padding:13px 20px;border-radius:9px;font-weight:bold;cursor:pointer;margin-top:12px}
-.container{padding:35px 7%;max-width:1200px;margin:auto}.title{display:flex;justify-content:space-between;align-items:center;gap:20px}
-.search{padding:12px 15px;border:1px solid #ccc;border-radius:9px;width:260px}
-.add-tools{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
-.add-btn{border:0;background:#222;color:white;padding:12px 18px;border-radius:9px;font-weight:bold;cursor:pointer}
-.add-btn:hover{background:#444}
-.add-btn.scan{background:#d6a84f;color:#171717}
-.uploaded{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-bottom:25px}
-.upload-card{background:white;border-radius:14px;padding:18px;box-shadow:0 3px 14px #00000012}
-.upload-card .file-icon{font-size:35px}.upload-card h3{margin:8px 0 5px}
-.upload-card p{color:#777;font-size:14px;margin:0 0 12px}
-.upload-card button{border:0;background:#222;color:white;padding:9px 13px;border-radius:7px;cursor:pointer}
-.categories{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
-.cat{padding:11px 17px;border:1px solid #ddd;background:white;border-radius:20px;cursor:pointer}.cat:hover,.cat.selected{background:#222;color:white}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.card{background:white;border-radius:14px;padding:20px;box-shadow:0 3px 14px #00000012}
-.card .music{font-size:35px}.card h3{margin:10px 0 5px}.card p{color:#777;margin:0 0 15px}
-.card button{width:100%;padding:10px;border:0;border-radius:8px;background:#222;color:white;cursor:pointer}
+.hero{padding:65px 7%;background:linear-gradient(120deg,#252525,#4a3a22);color:#fff}
+.hero h1{font-size:44px;margin:0 0 12px}.hero p{font-size:18px;color:#ddd;max-width:650px}
+.btn{border:0;background:#d6a84f;color:#171717;padding:12px 18px;border-radius:9px;font-weight:bold;cursor:pointer}
+.container{padding:32px 7%;max-width:1250px;margin:auto}
+.title{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.search{padding:12px 15px;border:1px solid #ccc;border-radius:9px;width:270px}
+.add-tools{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.add-btn{border:0;background:#222;color:#fff;padding:12px 17px;border-radius:9px;font-weight:bold;cursor:pointer}
+.add-btn:hover{background:#444}.add-btn.scan{background:#d6a84f;color:#171717}
+.categories{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
+.cat{padding:10px 15px;border:1px solid #ddd;background:#fff;border-radius:20px;cursor:pointer}
+.cat.selected,.cat:hover{background:#222;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
+.card,.upload-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 3px 14px #00000012}
+.card h3,.upload-card h3{margin:8px 0 5px}.card p,.upload-card p{color:#777;margin:0 0 14px;font-size:14px}
+.upload-card .file-icon{font-size:35px}
+.action-row{display:flex;gap:8px;flex-wrap:wrap}
+.action-row button{border:0;background:#222;color:#fff;padding:9px 12px;border-radius:7px;cursor:pointer}
+.action-row .danger{background:#8b2f2f}.action-row .edit{background:#666}
 .section{display:none}.section.show{display:block}
-.modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;z-index:10}
-.modal.show{display:flex}.modalbox{background:white;padding:30px;border-radius:15px;max-width:500px;width:90%;text-align:center}
-.close{float:right;border:0;background:none;font-size:24px;cursor:pointer}
-footer{text-align:center;padding:35px;color:#777}
+.empty{background:#fff;border:2px dashed #ddd;border-radius:14px;padding:45px;text-align:center;color:#777}
+.modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal.show{display:flex}
+.modalbox{background:#fff;padding:25px;border-radius:15px;width:min(900px,96vw);max-height:94vh;overflow:auto}
+.close{float:right;border:0;background:none;font-size:28px;cursor:pointer}
+.form-input,.form-select{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin-top:6px}
+label{display:block;text-align:left;margin-top:14px;font-weight:bold}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;flex-wrap:wrap}
+.secondary{border:0;background:#ddd;padding:12px 17px;border-radius:8px;cursor:pointer}
+.page-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:15px}
+.page-item{background:#f6f6f6;border:1px solid #ddd;border-radius:10px;padding:10px}
+.page-item img{width:100%;height:180px;object-fit:contain;background:#fff;border-radius:7px}
+.page-item button{margin-top:7px;border:0;padding:7px 10px;border-radius:7px;cursor:pointer}
+.crop-area{position:relative;background:#222;text-align:center;overflow:hidden;border-radius:10px;max-height:62vh}
+#cropImage{max-width:100%;max-height:62vh;display:block;margin:auto;user-select:none}
+#cropBox{position:absolute;border:3px solid #d6a84f;background:#d6a84f22;display:none;cursor:move}
+.crop-help{color:#777;font-size:14px}
+.viewer{background:#1e1e1e;border-radius:12px;padding:15px;text-align:center}
+.viewer img{max-width:100%;max-height:76vh;display:block;margin:0 auto}
+.viewer iframe{width:100%;height:76vh;border:0;border-radius:8px;background:#fff}
+.viewer-pages img{display:block;max-width:100%;margin:0 auto 18px;background:#fff;border-radius:4px}
+.category-manager{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.category-card{background:#fff;border-radius:12px;padding:17px;box-shadow:0 3px 14px #00000012}
+.category-card .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.small-danger{border:0;background:#8b2f2f;color:#fff;padding:7px 9px;border-radius:7px;cursor:pointer}
+.notice{background:#fff8df;border:1px solid #ead58a;padding:12px;border-radius:9px;color:#5f4d18}
 </style>
 </head>
 <body>
@@ -46,278 +68,305 @@ footer{text-align:center;padding:35px;color:#777}
     <button class="active" onclick="show('inicio',this)">Início</button>
     <button onclick="show('partituras',this)">Partituras</button>
     <button onclick="show('categorias',this)">Categorias</button>
-    <button onclick="show('sobre',this)">Sobre</button>
   </nav>
 </header>
 
 <section id="inicio" class="section show">
   <div class="hero">
     <h1>Meu Repertório Musical</h1>
-    <p>Um lugar para guardar, organizar e visualizar minhas partituras de música.</p>
-    <button class="btn" onclick="show('partituras',document.querySelectorAll('nav button')[1])">Ver minhas partituras →</button>
+    <p>Guarde, organize, corte e visualize suas partituras em um só lugar.</p>
+    <button class="btn" onclick="show('partituras',document.querySelectorAll('nav button')[1])">Ver minhas partituras</button>
   </div>
   <div class="container">
-    <h2>⭐ Destaques</h2>
-    <div class="grid">
-      
-      
-      <div class="card"><div class="music">🎼</div><h3>Nova partitura</h3><p>Adicionar depois</p><button onclick="openModal('Nova partitura')">Abrir partitura</button></div>
-    </div>
+    <h2>Seu repertório</h2>
+    <div class="empty" id="homeEmpty">Adicione sua primeira partitura para começar.</div>
   </div>
 </section>
 
 <section id="partituras" class="section">
 <div class="container">
-  <div class="title"><h1>🎼 Minhas Partituras</h1><input id="search" class="search" placeholder="🔎 Procurar música..." oninput="filterCards()"></div>
+  <div class="title"><h1>Minhas Partituras</h1><input id="search" class="search" placeholder="Procurar música..." oninput="filterCards()"></div>
   <div class="add-tools">
-    <button class="add-btn" onclick="document.getElementById('pdfInput').click()">📄 Adicionar PDF</button>
-    <button class="add-btn scan" onclick="document.getElementById('scanInput').click()">📷 Escanear partitura</button>
-    <input id="pdfInput" type="file" accept=".pdf,application/pdf" hidden onchange="addFile(this,'pdf')">
-    <input id="scanInput" type="file" accept="image/*" capture="environment" hidden onchange="addFile(this,'scan')">
+    <button class="add-btn" onclick="document.getElementById('pdfInput').click()">Adicionar PDF</button>
+    <button class="add-btn scan" onclick="document.getElementById('scanInput').click()">Escanear folha(s)</button>
+    <input id="pdfInput" type="file" accept=".pdf,application/pdf" hidden onchange="addPDF(this)">
+    <input id="scanInput" type="file" accept="image/*" capture="environment" multiple hidden onchange="addScans(this)">
   </div>
-  <div id="uploaded" class="uploaded"></div>
-  <div class="categories">
-    <button class="cat selected" onclick="filterCat('Todas',this)">Todas</button>
-    <button class="cat" onclick="filterCat('Piano',this)">🎹 Piano</button>
-    <button class="cat" onclick="filterCat('Violão',this)">🎸 Violão</button>
-    <button class="cat" onclick="filterCat('Flauta',this)">🪈 Flauta</button>
-    <button class="cat" onclick="filterCat('Favoritas',this)">⭐ Favoritas</button>
-  </div>
-  <div class="grid" id="cards"></div>
+  <div class="categories" id="filterCategories"></div>
+  <div id="uploaded" class="grid"></div>
+  <div id="emptyPartituras" class="empty">Nenhuma partitura adicionada ainda.</div>
+</div>
 </section>
 
 <section id="categorias" class="section">
-<div class="container"><h1>📚 Categorias</h1>
-<div class="grid">
-<div class="card"><div class="music">🎹</div><h3>Piano</h3><p>2 partituras</p><button onclick="goCat('Piano')">Ver partituras</button></div>
-<div class="card"><div class="music">🎸</div><h3>Violão</h3><p>1 partitura</p><button onclick="goCat('Violão')">Ver partituras</button></div>
-<div class="card"><div class="music">🪈</div><h3>Flauta</h3><p>1 partitura</p><button onclick="goCat('Flauta')">Ver partituras</button></div>
-<div class="card"><div class="music">⭐</div><h3>Favoritas</h3><p>1 partitura</p><button onclick="goCat('Favoritas')">Ver favoritas</button></div>
-</div></div>
+<div class="container">
+  <div class="title"><h1>Minhas Categorias</h1><button class="btn" onclick="openCategoryEditor()">+ Nova categoria</button></div>
+  <p class="notice">Você pode criar suas próprias categorias e excluir as que não quiser mais. Uma categoria só pode ser excluída se não estiver sendo usada por uma partitura.</p>
+  <div id="categoryManager" class="category-manager"></div>
+</div>
 </section>
 
-<section id="sobre" class="section">
-<div class="container"><h1>ℹ️ Sobre o site</h1><div class="card"><h2>Meu Repertório Musical</h2><p>Este é um espaço pessoal para organizar minhas músicas e partituras.</p><p>Depois podemos colocar PDFs reais, capas, instrumentos, busca, favoritos e muito mais.</p></div></div>
-</section>
-
-<div id="editor" class="modal"><div class="modalbox editorbox">
+<div id="editor" class="modal">
+<div class="modalbox">
 <button class="close" onclick="cancelEdit()">×</button>
-<div id="editorType" style="font-size:38px"></div>
 <h2>Editar partitura</h2>
 <p id="editorFile" style="color:#777"></p>
-<label style="display:block;text-align:left;margin-top:18px;font-weight:bold">Nome da música</label>
-<input id="editName" style="width:100%;padding:12px;margin-top:7px;border:1px solid #ccc;border-radius:8px" placeholder="Ex.: minha partitura">
-<label style="display:block;text-align:left;margin-top:15px;font-weight:bold">Categoria</label>
-<select id="editCategory" style="width:100%;padding:12px;margin-top:7px;border:1px solid #ccc;border-radius:8px">
-<option>Piano</option><option>Violão</option><option>Flauta</option><option>Favoritas</option><option>Outros</option>
-</select>
-<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:22px">
-<button class="add-btn" onclick="cancelEdit()">Cancelar</button>
-<button class="btn" onclick="savePartitura()">💾 Salvar partitura</button>
+<label>Nome da música</label>
+<input id="editName" class="form-input" placeholder="Nome da partitura">
+<label>Categoria</label>
+<select id="editCategory" class="form-select"></select>
+<div id="pageEditor"></div>
+<div class="modal-actions">
+<button class="secondary" onclick="cancelEdit()">Cancelar</button>
+<button class="btn" onclick="savePartitura()">Salvar partitura</button>
 </div>
 </div></div>
-<div id="modal" class="modal">
-  <div class="modalbox" style="width:min(1000px,95vw);max-height:92vh">
-    <button class="close" onclick="closeModal()">×</button>
-    <h2 id="modalTitle"></h2>
-    <div id="viewer" style="margin-top:15px;max-height:75vh;overflow:auto;text-align:center"></div>
-    <button class="btn" style="margin-top:15px" onclick="closeModal()">Fechar</button>
-  </div>
+
+<div id="cropModal" class="modal">
+<div class="modalbox">
+<button class="close" onclick="cancelCrop()">×</button>
+<h2>Recortar folha</h2>
+<p class="crop-help">Arraste sobre a imagem para marcar a área que você quer manter.</p>
+<div class="crop-area" id="cropArea">
+  <img id="cropImage" alt="Folha para recortar">
+  <div id="cropBox"></div>
 </div>
-<footer>🎼 Meu Repertório Musical</footer>
+<div class="modal-actions">
+<button class="secondary" onclick="skipCrop()">Usar folha inteira</button>
+<button class="btn" onclick="applyCrop()">Recortar e continuar</button>
+</div>
+</div></div>
+
+<div id="categoryModal" class="modal">
+<div class="modalbox" style="max-width:520px">
+<button class="close" onclick="closeCategoryEditor()">×</button>
+<h2>Nova categoria</h2>
+<label>Nome da categoria</label>
+<input id="newCategory" class="form-input" placeholder="Ex.: Violino">
+<div class="modal-actions">
+<button class="secondary" onclick="closeCategoryEditor()">Cancelar</button>
+<button class="btn" onclick="addCategory()">Adicionar</button>
+</div>
+</div></div>
+
+<div id="viewerModal" class="modal">
+<div class="modalbox" style="width:min(1100px,97vw)">
+<button class="close" onclick="closeViewer()">×</button>
+<div class="title"><h2 id="viewerTitle"></h2><div id="viewerCounter"></div></div>
+<div id="viewerContent" class="viewer"></div>
+<div class="modal-actions">
+<button class="secondary" onclick="prevPage()">Anterior</button>
+<button class="secondary" onclick="nextPage()">Próxima</button>
+<button class="btn" onclick="closeViewer()">Fechar</button>
+</div>
+</div></div>
+
+<footer style="text-align:center;padding:35px;color:#777">🎼 Meu Repertório Musical</footer>
 
 <script>
+const DB_NAME='MeuRepertorioMusicalV2', DB_VERSION=1, STORE='partituras', CAT_KEY='minhasCategoriasV2';
+let pending=null, cropState=null, viewerState={item:null,page:0}, filter='Todas';
+
 function show(id,btn){
  document.querySelectorAll('.section').forEach(s=>s.classList.remove('show'));
  document.getElementById(id).classList.add('show');
  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
  if(btn)btn.classList.add('active');
  window.scrollTo(0,0);
+ if(id==='categorias')renderCategories();
 }
-function openModal(name){document.getElementById('modalTitle').textContent=name;document.getElementById('modal').classList.add('show')}
-function closeModal(){
- document.getElementById('modal').classList.remove('show');
- document.getElementById('viewer').innerHTML='';
- if(window.currentViewerUrl){
-   URL.revokeObjectURL(window.currentViewerUrl);
-   window.currentViewerUrl=null;
- }
-}
-function filterCat(cat,btn){
- document.querySelectorAll('.cat').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');
- document.getElementById('search').value='';
- document.querySelectorAll('#cards .card').forEach(c=>c.style.display=(cat==='Todas'||c.dataset.cat.includes(cat))?'block':'none');
-}
-function filterCards(){
- let q=document.getElementById('search').value.toLowerCase();
- document.querySelectorAll('#cards .card').forEach(c=>c.style.display=c.dataset.name.includes(q)?'block':'none');
-}
-function addFile(input,type){
- const file=input.files[0];
- if(!file)return;
- window.pendingFile={file,type};
- document.getElementById('editName').value=file.name.replace(/\\.[^/.]+$/,"");
- document.getElementById('editCategory').value='Piano';
- document.getElementById('editorType').textContent=type==='pdf'?'📄 PDF selecionado':'📷 Partitura escaneada';
- document.getElementById('editorFile').textContent=file.name;
- document.getElementById('editor').classList.add('show');
- input.value='';
-}
-function cancelEdit(){
- document.getElementById('editor').classList.remove('show');
- window.pendingFile=null;
-}
-function getSaved(){
- return JSON.parse(localStorage.getItem('minhasPartituras') || '[]');
-}
-function saveAll(items){
- localStorage.setItem('minhasPartituras', JSON.stringify(items));
-}
-function renderSaved(){
- const area=document.getElementById('uploaded');
- area.innerHTML='';
- getSaved().forEach((item,index)=>{
-   const card=document.createElement('div');
-   card.className='upload-card';
-   card.dataset.cat=item.category;
-   card.dataset.name=item.name.toLowerCase();
-   card.innerHTML=`<div class="file-icon">${item.type==='pdf'?'📄':'📷'}</div>
-   <h3>${item.name}</h3>
-   <p>${item.category} • ${item.fileName}</p>
-   <button onclick="openSaved(${index})">Abrir partitura</button>
-   <button style="margin-left:7px;background:#8b2f2f" onclick="deleteSaved(${index})">Excluir</button>`;
-   area.appendChild(card);
+function openDB(){
+ return new Promise((resolve,reject)=>{
+  const r=indexedDB.open(DB_NAME,DB_VERSION);
+  r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(STORE))r.result.createObjectStore(STORE,{keyPath:'id',autoIncrement:true})};
+  r.onsuccess=()=>resolve(r.result); r.onerror=()=>reject(r.error);
  });
 }
+async function dbAll(){
+ const db=await openDB();
+ return new Promise((res,rej)=>{const r=db.transaction(STORE,'readonly').objectStore(STORE).getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+}
+async function dbAdd(item){
+ const db=await openDB();
+ return new Promise((res,rej)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).add(item);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});
+}
+async function dbDelete(id){
+ const db=await openDB();
+ return new Promise((res,rej)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).delete(id);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});
+}
+function cats(){return JSON.parse(localStorage.getItem(CAT_KEY)||'["Piano","Violão","Flauta","Favoritas","Outros"]')}
+function setCats(a){localStorage.setItem(CAT_KEY,JSON.stringify(a))}
+function refreshCategorySelect(){
+ const s=document.getElementById('editCategory'); const old=s.value;
+ s.innerHTML=cats().map(c=>`<option>${esc(c)}</option>`).join('');
+ if(cats().includes(old))s.value=old;
+}
+function renderCategories(){
+ const area=document.getElementById('categoryManager'); area.innerHTML='';
+ cats().forEach(c=>{
+  const el=document.createElement('div');el.className='category-card';
+  el.innerHTML=`<div class="row"><strong>${esc(c)}</strong><button class="small-danger" onclick="deleteCategory('${escAttr(c)}')">Excluir</button></div>`;
+  area.appendChild(el);
+ });
+}
+async function deleteCategory(c){
+ const items=await dbAll();
+ if(items.some(x=>x.category===c)){alert('Não dá para excluir esta categoria porque uma ou mais partituras usam ela.');return}
+ if(!confirm('Excluir a categoria "'+c+'"?'))return;
+ setCats(cats().filter(x=>x!==c));renderCategories();renderFilters();refreshCategorySelect();
+}
+function openCategoryEditor(){document.getElementById('newCategory').value='';document.getElementById('categoryModal').classList.add('show')}
+function closeCategoryEditor(){document.getElementById('categoryModal').classList.remove('show')}
+function addCategory(){
+ const c=document.getElementById('newCategory').value.trim();
+ if(!c)return alert('Digite o nome da categoria.');
+ if(cats().some(x=>x.toLowerCase()===c.toLowerCase()))return alert('Essa categoria já existe.');
+ setCats([...cats(),c]);closeCategoryEditor();renderCategories();renderFilters();refreshCategorySelect();
+}
+function renderFilters(){
+ const a=document.getElementById('filterCategories');a.innerHTML='';
+ ['Todas',...cats()].forEach(c=>{
+  const b=document.createElement('button');b.className='cat'+(filter===c?' selected':'');b.textContent=c;
+  b.onclick=()=>{filter=c;renderFilters();renderList()};a.appendChild(b);
+ });
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function escAttr(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+async function renderList(){
+ const area=document.getElementById('uploaded');area.innerHTML='';
+ let items=await dbAll();items.sort((a,b)=>b.id-a.id);
+ const q=document.getElementById('search').value.toLowerCase();
+ items=items.filter(x=>(filter==='Todas'||x.category===filter)&&x.name.toLowerCase().includes(q));
+ items.forEach(item=>{
+  const el=document.createElement('div');el.className='upload-card';el.dataset.name=item.name.toLowerCase();el.dataset.cat=item.category;
+  const icon=item.kind==='pdf'?'PDF':'Folhas';
+  el.innerHTML=`<div class="file-icon">${icon}</div><h3>${esc(item.name)}</h3><p>${esc(item.category)} • ${item.pages.length} folha(s)</p>
+  <div class="action-row"><button onclick="openViewer(${item.id})">Abrir</button><button class="edit" onclick="editSaved(${item.id})">Editar</button><button class="danger" onclick="deleteSaved(${item.id})">Excluir</button></div>`;
+  area.appendChild(el);
+ });
+ document.getElementById('emptyPartituras').style.display=items.length?'none':'block';
+ const all=await dbAll();document.getElementById('homeEmpty').style.display=all.length?'none':'block';
+}
+function filterCards(){renderList()}
+async function addPDF(input){
+ const f=input.files[0];input.value='';if(!f)return;
+ pending={kind:'pdf',pages:[f],name:f.name.replace(/\.[^/.]+$/,''),category:cats()[0],fileName:f.name,editingId:null};
+ openEditor();
+}
+async function addScans(input){
+ const files=[...input.files];input.value='';if(!files.length)return;
+ pending={kind:'images',pages:[],name:files[0].name.replace(/\.[^/.]+$/,''),category:cats()[0],fileName:files.map(f=>f.name).join(', '),editingId:null,queue:files.slice(),cropIndex:0};
+ processNextCrop();
+}
+function openEditor(){
+ refreshCategorySelect();document.getElementById('editName').value=pending.name;
+ document.getElementById('editCategory').value=pending.category;
+ document.getElementById('editorFile').textContent=pending.fileName;
+ renderPageEditor();document.getElementById('editor').classList.add('show');
+}
+function renderPageEditor(){
+ const area=document.getElementById('pageEditor');area.innerHTML='';
+ if(!pending||pending.kind==='pdf')return;
+ area.innerHTML='<label>Folhas adicionadas</label><div class="page-list" id="pendingPages"></div>';
+ const list=document.getElementById('pendingPages');
+ pending.pages.forEach((file,i)=>{
+  const box=document.createElement('div');box.className='page-item';
+  const img=document.createElement('img');img.src=URL.createObjectURL(file);box.appendChild(img);
+  const b=document.createElement('button');b.textContent='Excluir folha';b.onclick=()=>{pending.pages.splice(i,1);renderPageEditor()};box.appendChild(b);list.appendChild(box);
+ });
+ const add=document.createElement('button');add.className='add-btn';add.style.marginTop='10px';add.textContent='+ Adicionar outra folha';
+ add.onclick=()=>document.getElementById('scanMore').click();area.appendChild(add);
+ const inp=document.createElement('input');inp.id='scanMore';inp.type='file';inp.accept='image/*';inp.multiple=true;inp.hidden=true;inp.onchange=async()=>{const fs=[...inp.files];for(const f of fs){await cropSingle(f,true)};inp.remove();};area.appendChild(inp);
+}
+function processNextCrop(){
+ if(!pending.queue.length){openEditor();return}
+ const file=pending.queue.shift();pending.currentFile=file;openCrop(file);
+}
+function openCrop(file){
+ const modal=document.getElementById('cropModal'),img=document.getElementById('cropImage'),box=document.getElementById('cropBox');
+ img.onload=()=>{box.style.display='none';cropState={file,img,startX:0,startY:0,x:0,y:0,w:0,h:0,drag:false};};
+ img.src=URL.createObjectURL(file);modal.classList.add('show');
+}
+function pointerPos(e){
+ const r=document.getElementById('cropImage').getBoundingClientRect();
+ const x=Math.max(0,Math.min(r.width,e.clientX-r.left)),y=Math.max(0,Math.min(r.height,e.clientY-r.top));return {x,y,r};
+}
+const cropArea=document.getElementById('cropArea');
+cropArea.addEventListener('pointerdown',e=>{
+ if(!cropState)return;const p=pointerPos(e);cropState.drag=true;cropState.startX=p.x;cropState.startY=p.y;cropState.x=p.x;cropState.y=p.y;cropState.w=0;cropState.h=0;cropArea.setPointerCapture(e.pointerId);updateCropBox();
+});
+cropArea.addEventListener('pointermove',e=>{
+ if(!cropState?.drag)return;const p=pointerPos(e);cropState.x=Math.min(cropState.startX,p.x);cropState.y=Math.min(cropState.startY,p.y);cropState.w=Math.abs(p.x-cropState.startX);cropState.h=Math.abs(p.y-cropState.startY);updateCropBox();
+});
+cropArea.addEventListener('pointerup',()=>{if(cropState)cropState.drag=false});
+function updateCropBox(){const b=document.getElementById('cropBox');if(!cropState||cropState.w<3){b.style.display='none';return}b.style.display='block';b.style.left=cropState.x+'px';b.style.top=cropState.y+'px';b.style.width=cropState.w+'px';b.style.height=cropState.h+'px'}
+function cancelCrop(){document.getElementById('cropModal').classList.remove('show');pending=null}
+function skipCrop(){finishCrop(null)}
+function applyCrop(){
+ if(!cropState||cropState.w<5||cropState.h<5)return alert('Marque uma área maior para recortar.');
+ const img=cropState.img,r=img.getBoundingClientRect(),scaleX=img.naturalWidth/r.width,scaleY=img.naturalHeight/r.height;
+ const c=document.createElement('canvas');c.width=Math.round(cropState.w*scaleX);c.height=Math.round(cropState.h*scaleY);
+ c.getContext('2d').drawImage(img,cropState.x*scaleX,cropState.y*scaleY,c.width,c.height,0,0,c.width,c.height);
+ c.toBlob(blob=>finishCrop(new File([blob],'folha-cortada.jpg',{type:'image/jpeg'})),'image/jpeg',.92);
+}
+function finishCrop(file){
+ document.getElementById('cropModal').classList.remove('show');
+ if(file)pending.pages.push(file);else pending.pages.push(pending.currentFile);
+ pending.currentFile=null;
+ if(pending.queue?.length)processNextCrop();else openEditor();
+}
+async function cropSingle(file,afterEditor=false){
+ pending.currentFile=file;openCrop(file);
+}
+function cancelEdit(){document.getElementById('editor').classList.remove('show');pending=null}
 async function savePartitura(){
- const name=document.getElementById('editName').value.trim();
- const category=document.getElementById('editCategory').value;
- if(!name){alert('Digite um nome para a partitura.');return;}
- if(!window.pendingFile)return;
+ if(!pending)return;
+ const name=document.getElementById('editName').value.trim();if(!name)return alert('Digite um nome.');
+ pending.name=name;pending.category=document.getElementById('editCategory').value;
+ const pages=pending.pages.slice();
+ if(!pages.length)return alert('Adicione pelo menos uma folha.');
+ const item={name,category:pending.category,kind:pending.kind,pages,fileName:pending.fileName};
  try{
-   const item={
-     name,
-     category,
-     type:window.pendingFile.type,
-     fileName:window.pendingFile.file.name,
-     file:window.pendingFile.file
-   };
-   await saveToDB(item);
-   document.getElementById('editor').classList.remove('show');
-   window.pendingFile=null;
-   document.getElementById('uploaded').innerHTML='';
-   await loadSaved();
-   alert('Partitura salva! Ela continuará aqui mesmo depois de fechar e abrir o site neste navegador.');
- }catch(e){
-   console.error(e);
-   alert('Não foi possível salvar a partitura neste navegador.');
+  if(pending.editingId){item.id=pending.editingId;await replaceItem(item)}
+  else await dbAdd(item);
+  document.getElementById('editor').classList.remove('show');pending=null;await renderList();alert('Partitura salva com sucesso.');
+ }catch(e){console.error(e);alert('Não foi possível salvar a partitura.')}
+}
+async function replaceItem(item){
+ const db=await openDB();return new Promise((res,rej)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(item);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});
+}
+async function editSaved(id){
+ const item=(await dbAll()).find(x=>x.id===id);if(!item)return;
+ pending={...item,editingId:id,pages:[...item.pages]};
+ openEditor();
+}
+async function deleteSaved(id){
+ if(!confirm('Excluir esta partitura e todas as suas folhas?'))return;
+ await dbDelete(id);await renderList();
+}
+async function openViewer(id){
+ const item=(await dbAll()).find(x=>x.id===id);if(!item)return;
+ viewerState={item,page:0};renderViewer();document.getElementById('viewerModal').classList.add('show');
+}
+function renderViewer(){
+ const item=viewerState.item,p=viewerState.page,content=document.getElementById('viewerContent');
+ document.getElementById('viewerTitle').textContent=item.name;
+ document.getElementById('viewerCounter').textContent=(item.kind==='pdf'?'PDF':'Folha '+(p+1)+' de '+item.pages.length);
+ content.innerHTML='';
+ if(item.kind==='pdf'){
+  const url=URL.createObjectURL(item.pages[0]);const iframe=document.createElement('iframe');iframe.src=url;content.appendChild(iframe);
+  viewerState.url=url;
+ }else{
+  const img=document.createElement('img');img.src=URL.createObjectURL(item.pages[p]);content.appendChild(img);
  }
 }
-function goCat(cat){
- show('partituras',document.querySelectorAll('nav button')[1]);
- let btn=[...document.querySelectorAll('.cat')].find(b=>b.textContent.includes(cat));
- if(btn)filterCat(cat,btn);
+function closeViewer(){
+ document.getElementById('viewerModal').classList.remove('show');
+ if(viewerState.url){URL.revokeObjectURL(viewerState.url);viewerState.url=null}
 }
-
-// ===== Armazenamento permanente no navegador com IndexedDB =====
-const DB_NAME = 'MeuRepertorioMusical';
-const DB_VERSION = 1;
-const STORE = 'partituras';
-
-function openDB(){
-  return new Promise((resolve,reject)=>{
-    const request=indexedDB.open(DB_NAME,DB_VERSION);
-    request.onupgradeneeded=()=>request.result.createObjectStore(STORE,{keyPath:'id',autoIncrement:true});
-    request.onsuccess=()=>resolve(request.result);
-    request.onerror=()=>reject(request.error);
-  });
-}
-async function saveToDB(item){
-  const db=await openDB();
-  return new Promise((resolve,reject)=>{
-    const tx=db.transaction(STORE,'readwrite');
-    tx.objectStore(STORE).add(item);
-    tx.oncomplete=()=>resolve();
-    tx.onerror=()=>reject(tx.error);
-  });
-}
-async function getAllFromDB(){
-  const db=await openDB();
-  return new Promise((resolve,reject)=>{
-    const req=db.transaction(STORE,'readonly').objectStore(STORE).getAll();
-    req.onsuccess=()=>resolve(req.result);
-    req.onerror=()=>reject(req.error);
-  });
-}
-async function deleteFromDB(id){
-  const db=await openDB();
-  return new Promise((resolve,reject)=>{
-    const tx=db.transaction(STORE,'readwrite');
-    tx.objectStore(STORE).delete(id);
-    tx.oncomplete=()=>resolve();
-    tx.onerror=()=>reject(tx.error);
-  });
-}
-function renderSaved(item){
-  const area=document.getElementById('uploaded');
-  const card=document.createElement('div');
-  card.className='upload-card';
-  card.dataset.cat=item.category;
-  card.dataset.name=item.name.toLowerCase();
-  const icon=item.type==='pdf'?'📄':'📷';
-  card.innerHTML=`<div class="file-icon">${icon}</div><h3>${item.name}</h3><p>${item.category} • ${item.fileName}</p>
-  <button onclick="openSavedFile(${item.id})">Abrir partitura</button>
-  <button style="margin-left:7px;background:#777" onclick="removeSaved(${item.id},this)">Excluir</button>`;
-  area.prepend(card);
-}
-async function loadSaved(){
-  try{
-    const items=await getAllFromDB();
-    items.sort((a,b)=>b.id-a.id).forEach(renderSaved);
-  }catch(e){console.error(e);}
-}
-async function openSavedFile(id){
-  const items=await getAllFromDB();
-  const item=items.find(x=>x.id===id);
-  if(!item)return;
-
-  const url=URL.createObjectURL(item.file);
-  const viewer=document.getElementById('viewer');
-  const title=document.getElementById('modalTitle');
-  title.textContent=item.name;
-  viewer.innerHTML='';
-
-  if(item.type==='pdf' || item.file.type==='application/pdf'){
-    const frame=document.createElement('iframe');
-    frame.src=url;
-    frame.style.width='100%';
-    frame.style.height='70vh';
-    frame.style.border='0';
-    frame.style.borderRadius='10px';
-    frame.setAttribute('title','Visualizador da partitura');
-    viewer.appendChild(frame);
-  }else{
-    const img=document.createElement('img');
-    img.src=url;
-    img.alt=item.name;
-    img.style.maxWidth='100%';
-    img.style.height='auto';
-    img.style.display='block';
-    img.style.margin='0 auto';
-    img.style.borderRadius='10px';
-    viewer.appendChild(img);
-  }
-
-  document.getElementById('modal').classList.add('show');
-  window.currentViewerUrl=url;
-}
-async function removeSaved(id,button){
-  if(!confirm('Excluir esta partitura?'))return;
-  await deleteFromDB(id);
-  button.parentElement.remove();
-}
-document.addEventListener('DOMContentLoaded',loadSaved);
-
+function prevPage(){if(viewerState.item?.kind==='images'&&viewerState.page>0){viewerState.page--;renderViewer()}}
+function nextPage(){if(viewerState.item?.kind==='images'&&viewerState.page<viewerState.item.pages.length-1){viewerState.page++;renderViewer()}}
+document.addEventListener('DOMContentLoaded',()=>{renderFilters();refreshCategorySelect();renderList()});
 </script>
 </body>
 </html>
